@@ -1,7 +1,5 @@
 
 import { Link, useParams } from 'react-router'
-import { mockProducts } from '../types/mockProducts';
-import { useCart } from '../context/CartContext';
 import ProductDetail from '../component/ProductDetail';
 
 const ProductDetailPage = () => {
