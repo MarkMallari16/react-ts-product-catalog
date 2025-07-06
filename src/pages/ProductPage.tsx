@@ -27,7 +27,7 @@ const mockProducts: Product[] = [
 
 const ProductPage = () => {
     return (
-        <div className='grid grid-cols-1 lg:grid-cols-4 gap-4 p-4 mt-8'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 mt-8'>
             {
                 mockProducts.map((product) => (
                     <ProductCard key={product.id} product={product} />
