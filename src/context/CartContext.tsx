@@ -20,11 +20,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         return stored ? JSON.parse(stored) : [];
     });
 
-
     useEffect(() => {
-
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
     }, [cartItems])
 
     //function to add cart
@@ -42,10 +39,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         })
     }
 
+    //remove product in cart
     const removeFromCart = (id: string) => {
         setCartItems((prev) => prev.filter(item => item.id !== id));
     }
 
+    //update quantity
     const updateQuantity = (id: string, quantity: number) => {
         setCartItems((prev) =>
             prev.map((item) =>
@@ -53,11 +52,13 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         )
     }
 
+    //clear the cart
     const clearCart = () => {
         setCartItems([]);
         localStorage.removeItem("cartItems");
     }
 
+    //context provider
     return (
         <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity, clearCart }}>
             {children}
