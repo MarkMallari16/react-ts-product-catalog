@@ -11,6 +11,7 @@ import Tablet from '../assets/images/tablet.jpg';
 import Smartwatch from '../assets/images/smartwatch.jpg';
 import Camera from '../assets/images/camera.jpg';
 import Speaker from '../assets/images/speaker.jpg';
+import { useCart } from '../context/CartContext';
 
 const mockProducts: Product[] = [
     { id: "1", title: "Laptop", description: "Powerful laptop with high performance.", price: 1200, image: Laptop },
@@ -26,14 +27,21 @@ const mockProducts: Product[] = [
 ]
 
 const ProductPage = () => {
+    const { showStatus } = useCart();
     return (
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 mt-8'>
-            {
-                mockProducts.map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                ))
-            }
+        <div className='mx-4 lg:mx-20'>
+            <div role="alert" className={`mt-10 alert alert-success alert-soft transition-all ease-in-out ${showStatus ? 'opacity-100' : 'opacity-0'}`}>
+                <span>Successfully added to cart!</span>
+            </div>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 mt-8'>
+                {
+                    mockProducts.map((product) => (
+                        <ProductCard key={product.id} product={product} />
+                    ))
+                }
+            </div>
         </div>
+
     )
 }
 

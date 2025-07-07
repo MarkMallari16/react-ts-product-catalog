@@ -66,7 +66,7 @@ const Cart = () => {
                   Clear Cart
                 </button>
               </div>
-              <div className='ring-1 ring-inset ring-gray-600 h-60 p-6 rounded-md'>
+              <div className='ring-1 ring-inset ring-gray-600 h-60 p-6 rounded-md sticky top-4'>
                 <h2 className='font-medium text-2xl'>Order Summary</h2>
                 <div>
                   <div className='flex justify-between mt-2 mb-2 text-lg'>

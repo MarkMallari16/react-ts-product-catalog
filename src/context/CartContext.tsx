@@ -8,6 +8,8 @@ interface CartContextType {
     removeFromCart: (id: string) => void;
     updateQuantity: (id: string, quantity: number) => void;
     clearCart: () => void;
+    showStatus: boolean,
+    setShowStatus: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 //creating context
@@ -20,6 +22,18 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         return stored ? JSON.parse(stored) : [];
     });
 
+    const [showStatus, setShowStatus] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (showStatus) {
+            const timer = setTimeout(() => {
+                setShowStatus(false);
+            }, 3000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [showStatus])
+
     useEffect(() => {
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
     }, [cartItems])
@@ -31,12 +45,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             if (existing) {
                 return prev.map((item) =>
                     item.id === product.id
-                        ? { ...item, quantity: quantity }
+                        ? { ...item, quantity: item.quantity + quantity }
                         : item
                 );
             }
             return [...prev, { ...product, quantity: quantity }]
         })
+
+        setShowStatus(true);
     }
 
     //remove product in cart
@@ -60,7 +76,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
     //context provider
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity, clearCart }}>
+        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity, clearCart, showStatus, setShowStatus }}>
             {children}
         </CartContext.Provider>
     )
