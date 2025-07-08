@@ -15,7 +15,6 @@ const ProductCard = ({ product }: { product: Product }) => {
   return (
     <div className="ring-1 ring-inset ring-gray-600 rounded-lg w-full">
       <img src={product.image} alt={product.title} loading='lazy' className="w-full h-64 object-cover rounded-t-md" />
-
       <div className='p-4'>
         <h2 className='pt-2 font-medium text-lg'>{product.title}</h2>
         <p className='pt-1'>${product.price}</p>
