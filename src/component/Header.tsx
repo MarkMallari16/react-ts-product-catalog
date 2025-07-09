@@ -1,6 +1,5 @@
 import { Link } from 'react-router'
 import { useCart } from '../context/CartContext'
-import MarkProfile from '../assets/profile/mark_shs_2.jpg'
 const Header = () => {
     const { cartItems } = useCart();
     return (
