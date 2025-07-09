@@ -6,7 +6,7 @@ import { Link } from 'react-router'
 const ProductCard = ({ product }: { product: Product }) => {
 
   const { addToCart } = useCart();
-  const [quantity, setQuantity] = useState<number>(1);
+  const [quantity] = useState<number>(1);
 
   const handleAddToCart = (product: Product) => {
     addToCart(product, quantity);
