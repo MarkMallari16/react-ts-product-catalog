@@ -16,7 +16,7 @@ const CheckoutPage = () => {
                 <div className="mb-6">
                     <h1 className="font-bold text-3xl">Checkout</h1>
                 </div>
-                <div className="ring-1 ring-inset text-gray-300 py-6 px-8 rounded-md">
+                <div className="ring-1 ring-inset ring-gray-500  py-6 px-8 rounded-md">
                     <h3 className="text-2xl font-medium mb-2">Your order</h3>
                     <ul className="mb-4">
                         {cartItems.map((item) => (
