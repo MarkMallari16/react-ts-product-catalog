@@ -3,12 +3,8 @@ import { useCart } from "../context/CartContext";
 import QuantityComponent from "./QuantityComponent";
 
 const Cart = () => {
-  const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
+  const { cartItems, removeFromCart, updateQuantity, clearCart, total } = useCart();
 
-  //calculate user carts
-  const total = cartItems.reduce((acc, currentValue) => {
-    return acc + (currentValue.price * currentValue.quantity);
-  }, 0)
 
   return (
     <>
@@ -80,7 +76,7 @@ const Cart = () => {
                     <h2>${total}</h2>
                   </div>
                   <div className='pt-6'>
-                    <button className='btn btn-primary w-full font-bold'>Checkout</button>
+                    <Link to='/checkout' className='btn btn-primary w-full font-bold'>Checkout</Link>
                   </div>
                 </div>
               </div>

@@ -10,6 +10,7 @@ interface CartContextType {
     clearCart: () => void;
     showStatus: boolean,
     setShowStatus: React.Dispatch<React.SetStateAction<boolean>>;
+    total: number;
 }
 
 //creating context
@@ -74,9 +75,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         localStorage.removeItem("cartItems");
     }
 
+    //total
+    const total = cartItems.reduce((acc, currentValue) => {
+        return acc + (currentValue.price * currentValue.quantity);
+    }, 0)
+
     //context provider
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity, clearCart, showStatus, setShowStatus }}>
+        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity, clearCart, showStatus, setShowStatus, total }}>
             {children}
         </CartContext.Provider>
     )

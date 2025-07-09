@@ -7,7 +7,7 @@ interface QuantityProps {
 
 const QuantityComponent = ({ quantity, onDecrease, onIncrease }: QuantityProps) => {
     return (
-        <div className='flex items-center gap-2 '>
+        <div className='flex items-center gap-2'>
             <button className='btn btn-ghost' onClick={onDecrease} disabled={quantity <= 1}>-</button>
             <p>{quantity}</p>
             <button className='btn btn-ghost' onClick={onIncrease}>+</button>
