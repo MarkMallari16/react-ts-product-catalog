@@ -43,7 +43,7 @@ const ProductDetail = ({ id }: { id: string }) => {
                 </div>
                 <div className='mt-4'>
                     <p>Quantity:</p>
-                    <div className='flex items-center gap-2'>
+                    <div className='mt-2 flex items-center gap-2 ring-1 ring-inset ring-gray-500 rounded-lg w-fit'>
                         <button className='btn btn-ghost' onClick={decreasedQuantity} disabled={quantity === 0}>-</button>
                         <p>{quantity}</p>
                         <button className='btn btn-ghost' onClick={increasedQuantity}>+</button>

@@ -12,6 +12,7 @@ import Smartwatch from '../assets/images/smartwatch.jpg';
 import Camera from '../assets/images/camera.jpg';
 import Speaker from '../assets/images/speaker.jpg';
 import { useCart } from '../context/CartContext';
+import { useEffect, useRef } from 'react';
 
 const mockProducts: Product[] = [
     { id: "1", title: "Laptop", description: "Powerful laptop with high performance.", price: 1200, image: Laptop },
@@ -28,6 +29,13 @@ const mockProducts: Product[] = [
 
 const ProductPage = () => {
     const { showStatus } = useCart();
+    const inputElementRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        if (inputElementRef.current) {
+            inputElementRef.current.focus();
+        }
+    }, [])
     return (
         <div className='mx-4 lg:mx-20'>
             <div role="alert" className={`mt-10 alert alert-success alert-soft transition-all ease-in-out ${showStatus ? 'opacity-100' : 'opacity-0'}`}>
@@ -41,7 +49,6 @@ const ProductPage = () => {
                 }
             </div>
         </div>
-
     )
 }
 
