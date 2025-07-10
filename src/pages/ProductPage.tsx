@@ -12,7 +12,8 @@ import Smartwatch from '../assets/images/smartwatch.jpg';
 import Camera from '../assets/images/camera.jpg';
 import Speaker from '../assets/images/speaker.jpg';
 import { useCart } from '../context/CartContext';
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
+import ProductCardSkeleton from '../component/ProductCardSkeleton';
 
 const mockProducts: Product[] = [
     { id: "1", title: "Laptop", description: "Powerful laptop with high performance.", price: 1200, image: Laptop },
@@ -28,14 +29,16 @@ const mockProducts: Product[] = [
 ]
 
 const ProductPage = () => {
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     const { showStatus } = useCart();
-    const inputElementRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        if (inputElementRef.current) {
-            inputElementRef.current.focus();
-        }
-    }, [])
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 1500);
+
+        return () => clearTimeout(timer);
+    })
     return (
         <div className='mx-4 lg:mx-20'>
             <div role="alert" className={`mt-10 alert alert-success alert-soft transition-all ease-in-out ${showStatus ? 'opacity-100' : 'opacity-0'}`}>
@@ -43,9 +46,12 @@ const ProductPage = () => {
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 mt-8'>
                 {
-                    mockProducts.map((product) => (
-                        <ProductCard key={product.id} product={product} />
-                    ))
+                    isLoading ? Array.from({ length: 8 }).map((_, index) => (
+                        <ProductCardSkeleton key={index} />
+                    )) :
+                        mockProducts.map((product) => (
+                            <ProductCard key={product.id} product={product} />
+                        ))
                 }
             </div>
         </div>
