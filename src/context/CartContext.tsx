@@ -29,7 +29,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         if (showStatus) {
             const timer = setTimeout(() => {
                 setShowStatus(false);
-            }, 3000);
+            }, 1000);
 
             return () => clearTimeout(timer);
         }

@@ -19,7 +19,7 @@ const Header = () => {
                         tabIndex={0}
                         className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow">
                         <div className="card-body">
-                            <span className="text-lg font-bold">{cartItems.length} Items</span>
+                            <span className="text-lg font-bold">{cartItems.length} Item(s)</span>
                             {/* <span className="text-info">Subtotal: $999</span> */}
                             <div className="card-actions">
                                 <Link to='/cart' className="btn btn-primary btn-block">View cart</Link>

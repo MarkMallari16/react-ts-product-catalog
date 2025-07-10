@@ -42,6 +42,9 @@ const ProductPage = () => {
     return (
         <div className='mx-4 lg:mx-20'>
             <div role="alert" className={`mt-10 alert alert-success alert-soft transition-all ease-in-out ${showStatus ? 'opacity-100' : 'opacity-0'}`}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
                 <span>Successfully added to cart!</span>
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 mt-8'>
